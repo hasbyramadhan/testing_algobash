@@ -1,0 +1,6 @@
+<odoo>
+    <record id="sync_log" model="ir.config_parameter">
+        <field name="key">product.sync.log</field>
+        <field name="value">Sync log for product changes.</field>
+    </record>
+</odoo>

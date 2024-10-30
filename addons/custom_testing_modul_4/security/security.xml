@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_cancel_reason_manager" model="res.groups">
+        <field name="name">Cancel Reason Manager</field>
+        <!-- <field name="category_id" ref="base.module_category_sales_management"/> -->
+    </record>
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <!-- Menu Item for Cancel Reasons -->
+        <menuitem id="menu_cancel_reason_root" name="Cancel Reasons" parent="base.menu_root" sequence="10"/>
+
+        <menuitem id="menu_cancel_reason" name="Manage Cancel Reasons" parent="menu_cancel_reason_root" sequence="10"/>
+
+        <act_window id="action_cancel_reason" 
+                    name="Cancel Reasons" 
+                    res_model="cancel.reason" 
+                    view_mode="tree,form" 
+                    target="current"/>
+
+        <menuitem id="menu_cancel_reason_action" 
+                  name="Cancel Reasons" 
+                  parent="menu_cancel_reason" 
+                  action="action_cancel_reason" 
+                  sequence="10"/>
+
+        <!-- Form for Cancel Reason -->
+        <record id="view_cancel_reason_form" model="ir.ui.view">
+            <field name="name">cancel.reason.form</field>
+            <field name="model">cancel.reason</field>
+            <field name="arch" type="xml">
+                <form string="Cancel Reason">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_cancel_reason_tree" model="ir.ui.view">
+            <field name="name">cancel.reason.tree</field>
+            <field name="model">cancel.reason</field>
+            <field name="arch" type="xml">
+                <tree string="Cancel Reasons">
+                    <field name="name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Adding Cancel Reason to Sale Order Form -->
+        <record id="view_sale_order_form_inherit_cancel_reason" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.cancel.reason</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="after">
+                    <field name="cancel_reason_id" options="{'no_create': True}" placeholder="Select Cancel Reason"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
